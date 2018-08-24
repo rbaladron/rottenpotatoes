@@ -1,0 +1,17 @@
+%h1 Crear Nueva Película
+
+= form_tag movies_path do
+
+  = label :movie, :title, 'Título'
+  = text_field :movie, 'title'
+
+  = label :movie, :rating, 'Clasificación'
+  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+
+  = label :movie, :release_date, 'Fecha de estreno'
+  = date_select :movie, :release_date
+
+  = label :movie, :description, 'Fecha de estreno'
+  = text_area :movie, 'description'
+
+= submit_tag 'Guardar'
