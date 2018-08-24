@@ -1,17 +1,17 @@
 -# in app/views/movies/show.html.haml
  
-%h2 Details about #{@movie.title}
+%h2 Detalles sobre #{@movie.title}
  
 %ul#details
   %li
-    Rating:
+    Clasificación:
     = @movie.rating
   %li
-    Released on:
+    Fecha de EStreno:
     = @movie.release_date.strftime("%B %d, %Y")
  
-%h3 Description:
+%h3 Descripción:
  
 %p#description= @movie.description
  
-= link_to 'Back to movie list', movies_path
+= link_to 'volver a la lista de películas', movies_path
