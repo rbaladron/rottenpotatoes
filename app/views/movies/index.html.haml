@@ -1,18 +1,21 @@
 -#  This file is app/views/movies/index.html.haml
 %h1 Todas las Películas
- 
 %table#movies
   %thead
     %tr
+      %th Número
       %th Título
       %th Clasificación
       %th Fecha de estreno
+      %th More Info
       %th Más información
   %tbody
     - @movies.each do |movie|
       %tr
+        %td= movie.id
         %td= movie.title
         %td= movie.rating
         %td= movie.release_date
         %td= link_to "Más información sobre #{movie.title}", movie_path(movie)
+      
     = link_to 'Añadir otra película ', new_movie_path

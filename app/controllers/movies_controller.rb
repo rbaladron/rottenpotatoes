@@ -28,9 +28,11 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find params[:id]
     @movie.update(movie_params)
-    #@movie.update_attributes!(params[:movie])
-    flash[:notice] = "#{@movie.title} se ha actualizado correctamente."
-    redirect_to movie_path(@movie)
+    flash[:notice] = "#{@movie.title} se ha actualizado correctamente."    
+    respond_to do |client_wants|
+      client_wants.html { redirect_to movie_path(@movie) }
+      client_wants.xml { render :xml => @movie.to_xml }
+    end
   end
 
   def destroy
@@ -43,5 +45,13 @@ class MoviesController < ApplicationController
   private
     def movie_params #:title, :rating, :description, :release_date
       params.require(:movie).permit(:title, :rating, :description, :release_date )
+    end
+    
+    def check
+      if params[:ratings]
+        params[:ratings].keys
+      else
+        @all_ratings
+      end
     end
 end
